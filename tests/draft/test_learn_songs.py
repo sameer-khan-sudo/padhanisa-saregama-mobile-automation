@@ -3,8 +3,7 @@ import time
 from appium.webdriver.common.appiumby import AppiumBy
 
 # from utils import wait_and_click, click_terms_and_privacy
-from utils.utils import wait_and_click, click_skip_button, select_profile, perform_login, click_learn_to_sing, \
-    scroll_song_list, select_mode, handle_skip_button
+from utils.utils import wait_and_click, click_skip_button, select_profile, perform_login, click_learn_to_sing,  select_mode, handle_skip_button
 
 
 # Click on 'Permission Allow' button
