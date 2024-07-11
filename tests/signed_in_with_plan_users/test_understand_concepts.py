@@ -2,7 +2,7 @@ import time
 
 import pytest
 from appium.webdriver.common.appiumby import AppiumBy
-from selenium.common import NoSuchElementException, TimeoutException
+from selenium.common import TimeoutException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.actions import interaction
 from selenium.webdriver.common.actions.action_builder import ActionBuilder
