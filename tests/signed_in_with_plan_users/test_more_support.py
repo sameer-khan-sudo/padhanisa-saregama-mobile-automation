@@ -2,15 +2,14 @@ import time
 
 import pytest
 from appium.webdriver.common.appiumby import AppiumBy
-from selenium.common import NoSuchElementException
-from selenium.webdriver import Keys, ActionChains
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.actions import interaction
 from selenium.webdriver.common.actions.action_builder import ActionBuilder
 from selenium.webdriver.common.actions.pointer_input import PointerInput
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-from utils.utils import click_skip_button, wait_and_click, perform_login, select_profile, screen_click
+from utils.utils import click_skip_button, wait_and_click, perform_login, select_profile
 
 
 # Click on 'Permission Allow' button

@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a75459d-8ded-4764-bfa2-a076675d7e83" name="Changes" comment="Complete More Support Module.">
+      <change afterPath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_more_settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_more_support.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_more_support.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,23 +41,26 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2j6sPtvgTELv2Ycbvj2ldT7jWCV" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "Python tests.Python tests in test_more_support.py.executor": "Run",
-    "Python tests.Python tests in test_practice_exercise.py.executor": "Run",
-    "Python tests.Python tests in test_understand_concepts.py.executor": "Run",
-    "Python.conftest.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;Python tests.Python tests in test_more_settings.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_more_support.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_practice_exercise.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_understand_concepts.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.conftest.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\PADHANISA_SAREGAMA\tests\draft" />
@@ -141,7 +147,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720786468037</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Complete More Support Module.">
+      <option name="closed" value="true" />
+      <created>1720786737716</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1720786737716</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="UnknownFeatures">
