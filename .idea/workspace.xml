@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a75459d-8ded-4764-bfa2-a076675d7e83" name="Changes" comment="Updating code!!">
-      <change afterPath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_more_support.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_learn_songs.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/draft/test_learn_songs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_perform_to_songs.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/draft/test_perform_to_songs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_practice_exercise.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/draft/test_practice_exercise.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_more_support.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_more_support.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,21 +23,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "sameerKhan30"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;sameerKhan30&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/sameerKhan30/padhanisa-saregama-mobile-automation",
-    "accountId": "f9069e53-b815-419b-b992-f2fd27a53b62"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/sameerKhan30/padhanisa-saregama-mobile-automation&quot;,
+    &quot;accountId&quot;: &quot;f9069e53-b815-419b-b992-f2fd27a53b62&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2j6sPtvgTELv2Ycbvj2ldT7jWCV" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -53,6 +50,7 @@
     "Python tests.Python tests in test_more_support.py.executor": "Run",
     "Python tests.Python tests in test_practice_exercise.py.executor": "Run",
     "Python tests.Python tests in test_understand_concepts.py.executor": "Run",
+    "Python.conftest.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "settings.editor.selected.configurable": "preferences.pluginManager"
@@ -120,7 +118,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720720535342</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Updating code!!">
+      <option name="closed" value="true" />
+      <created>1720723159923</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1720723159923</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="UnknownFeatures">

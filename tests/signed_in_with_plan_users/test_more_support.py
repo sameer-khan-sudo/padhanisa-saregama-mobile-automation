@@ -1,10 +1,15 @@
 import time
 
 from appium.webdriver.common.appiumby import AppiumBy
+from selenium.common import NoSuchElementException
+from selenium.webdriver import Keys, ActionChains
+from selenium.webdriver.common.actions import interaction
+from selenium.webdriver.common.actions.action_builder import ActionBuilder
+from selenium.webdriver.common.actions.pointer_input import PointerInput
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-from utils.utils import click_skip_button, wait_and_click, perform_login
+from utils.utils import click_skip_button, wait_and_click, perform_login, select_profile, screen_click
 
 
 # Click on 'Permission Allow' button
@@ -24,7 +29,8 @@ def test_login(driver):
 
 # Select profile
 def test_select_profile(driver):
-    # select_profile(driver, 'Sameer')
+    # Select user profile
+    select_profile(driver, 'Sameer')
 
     # More screen locator
     scroll_element_xpath = 'new UiSelector().className("android.view.View").instance(8)'
@@ -63,9 +69,8 @@ def test_assert_email_and_phone(driver):
 
 # Dropdown concern selection
 def test_dropdown_selection(driver):
-    time.sleep(2)
+    desired_dropdown_value = 'Payment Error'
 
-    desired_dropdown_value = 'Booking Issue'
     # Dropdown locator
     dropdown_locator = '//android.widget.ImageView[@content-desc="Select"]'
     wait_and_click(driver, AppiumBy.XPATH, dropdown_locator)
@@ -79,12 +84,14 @@ def test_dropdown_selection(driver):
     dropdown_data_locator = '//android.widget.Button[@content-desc]'
     dropdown_options = driver.find_elements(AppiumBy.XPATH, dropdown_data_locator)
 
-    # Print dropdown options
+    # Print dropdown options and select the desired one
+    desired_option_found = False
     for index, option in enumerate(dropdown_options, start=1):
         text = option.get_attribute('content-desc')
         print(f'{index}. {text}')
 
         if text == desired_dropdown_value:
+            option.click()
             desired_option_found = True
             break
 
@@ -92,5 +99,98 @@ def test_dropdown_selection(driver):
     assert desired_option_found, f"Desired dropdown value '{desired_dropdown_value}' not found"
 
 
+# More about issue
+def test_more_about_issue(driver):
+    # More about field locator
+    more_about_field_locator = '//android.widget.EditText'
+    wait_and_click(driver, AppiumBy.XPATH, value=more_about_field_locator)
+
+    fill_data = driver.find_element(by=AppiumBy.XPATH, value='//android.widget.EditText')
+    data = ("Saregama India Ltd., formerly known as The Gramophone Company of India Ltd., is India's oldest music "
+            "label company, owned by the RP-Sanjiv Goenka Group of companies. The company is listed on the NSE and "
+            "the BSE with its head office located in Kolkata and other offices in Mumbai, Chennai and Delhi.")
+    fill_data.send_keys(data)
+    time.sleep(1)
+
+    # Click on the screen to close the keyboard
+    actions = ActionChains(driver)
+    actions.w3c_actions = ActionBuilder(driver, mouse=PointerInput(interaction.POINTER_TOUCH, "touch"))
+    actions.w3c_actions.pointer_action.move_to_location(814, 805)
+    actions.w3c_actions.pointer_action.pointer_down()
+    actions.w3c_actions.pointer_action.pause(0.1)
+    actions.w3c_actions.pointer_action.release()
+    actions.perform()
 
 
+def test_upload_media(driver):
+    # Upload media
+    upload_field_locator = '//android.widget.ImageView[@content-desc="Upload media"]'
+    wait_and_click(driver, AppiumBy.XPATH, value=upload_field_locator)
+
+    # Media/Image/Video permission
+    allow_all_btn_locator = ('//android.widget.Button[@resource-id="com.android.permissioncontroller:id'
+                             '/permission_allow_all_button"]')
+    wait_and_click(driver, AppiumBy.XPATH, value=allow_all_btn_locator)
+
+    # Upload image
+    image_locator = 'new UiSelector().className("android.widget.LinearLayout").instance(13)'
+    try:
+        # First, check if the element exists
+        if driver.find_elements(AppiumBy.ANDROID_UIAUTOMATOR, image_locator):
+            wait_and_click(driver, AppiumBy.ANDROID_UIAUTOMATOR, value=image_locator)
+            print("Image uploaded successfully!")
+        else:
+            print("No Image found!")
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
+        print("No Image found!")
+
+    return driver
+
+
+def test_click_on_submit(driver):
+    time.sleep(1)
+
+    direction = 'down'
+
+    # FIND THE CONTAINER ELEMENT
+    container = driver.find_element(AppiumBy.XPATH, value='//android.widget.ScrollView')
+
+    # GET THE DIMENSIONS OF THE CONTAINER
+    container_rect = container.rect
+
+    # CALCULATE START AND END POINTS FOR THE SCROLL
+    start_x = container_rect['x'] + container_rect['width'] // 2
+
+    if direction.lower() == 'down':
+        start_y = container_rect['y'] + container_rect['height'] * 0.8
+        end_y = container_rect['y'] + container_rect['height'] * 0.2
+    elif direction.lower() == 'up':
+        start_y = container_rect['y'] + container_rect['height'] * 0.2
+        end_y = container_rect['y'] + container_rect['height'] * 0.8
+    else:
+        raise ValueError("Direction must be either 'up' or 'down'")
+
+    # CREATE A POINTER INPUT OBJECT FOR TOUCH EVENTS
+    finger = PointerInput(interaction.POINTER_TOUCH, "finger")
+
+    # BUILD THE ACTION SEQUENCE
+    actions = ActionChains(driver)
+    actions.w3c_actions = ActionBuilder(driver, mouse=finger)
+
+    # PERFORM THE SCROLL ACTION
+    actions.w3c_actions.pointer_action.move_to_location(start_x, start_y)
+    actions.w3c_actions.pointer_action.pointer_down()
+    actions.w3c_actions.pointer_action.move_to_location(start_x, end_y)
+    actions.w3c_actions.pointer_action.release()
+
+    # PERFORM THE ACTION
+    actions.perform()
+
+    # Submit button
+    submit_btn_locator = '//android.widget.ImageView[@content-desc="Submit"]'
+    wait_and_click(driver, AppiumBy.XPATH, value=submit_btn_locator)
+
+
+def test_handle_tanks_popup(driver):
+    pass
