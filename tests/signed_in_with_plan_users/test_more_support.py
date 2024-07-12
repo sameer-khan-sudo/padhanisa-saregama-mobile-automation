@@ -149,7 +149,7 @@ def test_upload_media(driver):
     return driver
 
 
-@pytest.mark.skip('Not Needed')
+# @pytest.mark.skip('Not Needed')
 def test_click_on_submit(driver):
     time.sleep(1)
 
@@ -196,7 +196,7 @@ def test_click_on_submit(driver):
 
 
 # Thanks Popup screen
-@pytest.mark.skip('Not Needed')
+# @pytest.mark.skip('Not Needed')
 def test_handle_tanks_popup(driver):
     thanks_screen_locator = driver.find_element(by=AppiumBy.XPATH,
                                                 value='//android.view.View[contains(@content-desc,"Thank you")]')
@@ -208,7 +208,7 @@ def test_handle_tanks_popup(driver):
 
 
 # Remove uploaded media
-# @pytest.mark.skip('Not Needed')
+@pytest.mark.skip('Not Needed')
 def test_remove_media(driver):
     # Remove button
     remove_btn_locator = driver.find_element(by=AppiumBy.ANDROID_UIAUTOMATOR,

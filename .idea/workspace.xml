@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a75459d-8ded-4764-bfa2-a076675d7e83" name="Changes" comment="Updating code!!">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="9a75459d-8ded-4764-bfa2-a076675d7e83" name="Changes" comment="Complete More Support Module.">
       <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_more_support.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_more_support.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,7 +133,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720768943393</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Complete More Support Module.">
+      <option name="closed" value="true" />
+      <created>1720786468037</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1720786468037</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -142,6 +149,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Updating code!!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updating code!!" />
+    <MESSAGE value="Complete More Support Module." />
+    <option name="LAST_COMMIT_MESSAGE" value="Complete More Support Module." />
   </component>
 </project>
