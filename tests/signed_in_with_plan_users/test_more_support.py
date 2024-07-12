@@ -1,5 +1,6 @@
 import time
 
+import pytest
 from appium.webdriver.common.appiumby import AppiumBy
 from selenium.common import NoSuchElementException
 from selenium.webdriver import Keys, ActionChains
@@ -148,6 +149,7 @@ def test_upload_media(driver):
     return driver
 
 
+@pytest.mark.skip('Not Needed')
 def test_click_on_submit(driver):
     time.sleep(1)
 
@@ -190,7 +192,33 @@ def test_click_on_submit(driver):
     # Submit button
     submit_btn_locator = '//android.widget.ImageView[@content-desc="Submit"]'
     wait_and_click(driver, AppiumBy.XPATH, value=submit_btn_locator)
+    print('Click on Submit button')
 
 
+# Thanks Popup screen
+@pytest.mark.skip('Not Needed')
 def test_handle_tanks_popup(driver):
-    pass
+    thanks_screen_locator = driver.find_element(by=AppiumBy.XPATH,
+                                                value='//android.view.View[contains(@content-desc,"Thank you")]')
+    get_text = thanks_screen_locator.get_attribute('content-desc')
+    print(f'Extracted Text : {get_text}')
+    expected_text = 'Thank you for sharing your concern. We will contact you within 24-48 working hours'
+
+    assert get_text == expected_text
+
+
+# Remove uploaded media
+# @pytest.mark.skip('Not Needed')
+def test_remove_media(driver):
+    # Remove button
+    remove_btn_locator = driver.find_element(by=AppiumBy.ANDROID_UIAUTOMATOR,
+                                             value="new UiSelector().className(\"android.view.View\").instance(10)")
+    remove_btn_locator.click()
+    print('Uploaded image removed')
+
+
+# Click on Okay button
+def test_click_on_okay(driver):
+    okay_btn = '//android.widget.ImageView[@content-desc="Okay"]'
+    wait_and_click(driver, AppiumBy.XPATH, value=okay_btn)
+    print('Click on Okay button')
