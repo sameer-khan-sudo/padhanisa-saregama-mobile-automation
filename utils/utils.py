@@ -1,7 +1,7 @@
 import time
 
 from appium.webdriver.common.appiumby import AppiumBy
-from selenium.common import NoSuchElementException, TimeoutException, StaleElementReferenceException
+from selenium.common import NoSuchElementException, StaleElementReferenceException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.actions import interaction
 from selenium.webdriver.common.actions.action_builder import ActionBuilder
@@ -360,17 +360,17 @@ def language_selection(driver, language_type):
 
 
 # ALLOW NECESSARY DEVICE PERMISSIONS SUCH AS AUDIO AND VIDEO
-# def allow_device_permissions(driver, permission_type):
-#     audio_button_locator = "com.android.permissioncontroller:id/permission_allow_foreground_only_button"
-#     video_button_locator = "com.android.permissioncontroller:id/permission_allow_camera_button"
-#
-#     if permission_type == 'audio' or permission_type == 'both':
-#         el2 = driver.find_element(by=AppiumBy.ID, value=audio_button_locator)
-#         el2.click()
-#
-#     if permission_type == 'video' or permission_type == 'both':
-#         video_button = driver.find_element(by=AppiumBy.ID, value=video_button_locator)
-#         video_button.click()
+def allow_device_permissions(driver, permission_type):
+    audio_button_locator = "com.android.permissioncontroller:id/permission_allow_foreground_only_button"
+    video_button_locator = "com.android.permissioncontroller:id/permission_allow_camera_button"
+
+    if permission_type == 'audio' or permission_type == 'both':
+        el2 = driver.find_element(by=AppiumBy.ID, value=audio_button_locator)
+        el2.click()
+
+    if permission_type == 'video' or permission_type == 'both':
+        video_button = driver.find_element(by=AppiumBy.ID, value=video_button_locator)
+        video_button.click()
 
 
 # CLICK ON START BUTTON
@@ -419,6 +419,4 @@ def handle_setting(driver, setting_name, target_value):
                 element.click()
                 print(f"Clicked on: {content_desc_value}")
                 break
-
-
 

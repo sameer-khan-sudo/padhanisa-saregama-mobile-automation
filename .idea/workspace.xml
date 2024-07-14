@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a75459d-8ded-4764-bfa2-a076675d7e83" name="Changes" comment="Complete More Support Module.">
-      <change afterPath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_code.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_more_faq.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_terms_and_conditions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_my_account.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_help_videos.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/signed_in_with_plan_users/MODULE_COMPLETED/test_help_videos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_more_settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/signed_in_with_plan_users/MODULE_COMPLETED/test_more_settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_more_support.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/signed_in_with_plan_users/MODULE_COMPLETED/test_more_support.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_understand_concepts.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/signed_in_with_plan_users/MODULE_COMPLETED/test_understand_concepts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_more_faq.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_more_faq.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,10 +54,13 @@
     "Python tests.Python tests in test_more_faq.py.executor": "Run",
     "Python tests.Python tests in test_more_settings.py.executor": "Run",
     "Python tests.Python tests in test_more_support.py.executor": "Run",
+    "Python tests.Python tests in test_my_account.py.executor": "Run",
     "Python tests.Python tests in test_practice_exercise.py.executor": "Run",
+    "Python tests.Python tests in test_privacy_policy.py.executor": "Run",
     "Python tests.Python tests in test_terms_and_conditions.py.executor": "Run",
     "Python tests.Python tests in test_understand_concepts.py.executor": "Run",
     "Python.conftest.executor": "Run",
+    "Python.utils.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "settings.editor.selected.configurable": "preferences.pluginManager"
@@ -69,9 +68,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\PADHANISA_SAREGAMA\tests\signed_in_with_plan_users" />
       <recent name="C:\PADHANISA_SAREGAMA\tests\signed_in_with_plan_users\MODULE_COMPLETED" />
       <recent name="C:\PADHANISA_SAREGAMA\tests\draft" />
-      <recent name="C:\PADHANISA_SAREGAMA\tests\signed_in_with_plan_users" />
       <recent name="C:\PADHANISA_SAREGAMA\tests" />
       <recent name="C:\PADHANISA_SAREGAMA" />
     </key>
@@ -170,7 +169,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720790084911</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Complete More Support Module.">
+      <option name="closed" value="true" />
+      <created>1720867717714</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1720867717714</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -180,5 +187,16 @@
     <MESSAGE value="Updating code!!" />
     <MESSAGE value="Complete More Support Module." />
     <option name="LAST_COMMIT_MESSAGE" value="Complete More Support Module." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/utils/utils.py</url>
+          <line>239</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

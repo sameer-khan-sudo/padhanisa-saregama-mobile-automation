@@ -1,12 +1,11 @@
 import json
-import time
 
 from appium.webdriver.common.appiumby import AppiumBy
 from selenium.common import NoSuchElementException
-from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 
-from utils.utils import click_skip_button, wait_and_click, perform_login, select_profile, scroll_song_listing
+from utils.utils import click_skip_button, wait_and_click
 
 
 # Click on 'Permission Allow' button
