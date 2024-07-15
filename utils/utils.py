@@ -420,3 +420,43 @@ def handle_setting(driver, setting_name, target_value):
                 print(f"Clicked on: {content_desc_value}")
                 break
 
+
+def scroll_horizontal(driver, direction):
+    scroll_container_locator = (AppiumBy.XPATH, '//android.widget.HorizontalScrollView')
+    # Wait until the scroll container is visible
+    scroll_container = WebDriverWait(driver, 10).until(
+        EC.visibility_of_element_located(scroll_container_locator)
+    )
+    container_location = scroll_container.location
+    container_size = scroll_container.size
+
+    if direction == 'right':
+        start_x = container_location['x'] + (container_size['width'] * 0.9)
+        end_x = container_location['x'] + (container_size['width'] * 0.1)
+    elif direction == 'left':
+        start_x = container_location['x'] + (container_size['width'] * 0.1)
+        end_x = container_location['x'] + (container_size['width'] * 0.9)
+    else:
+        raise ValueError("Direction must be 'left' or 'right'")
+
+    center_y = container_location['y'] + (container_size['height'] / 2)
+
+    actions = ActionChains(driver)
+    actions.w3c_actions = ActionBuilder(driver, mouse=PointerInput(interaction.POINTER_TOUCH, "touch"))
+    actions.w3c_actions.pointer_action.move_to_location(start_x, center_y)
+    actions.w3c_actions.pointer_action.pointer_down()
+    actions.w3c_actions.pointer_action.move_to_location(end_x, center_y)
+    actions.w3c_actions.pointer_action.release()
+    actions.perform()
+
+
+# Close Keyboard
+
+def tap_on_screen(driver):
+    actions = ActionChains(driver)
+    actions.w3c_actions = ActionBuilder(driver, mouse=PointerInput(interaction.POINTER_TOUCH, "touch"))
+    actions.w3c_actions.pointer_action.move_to_location(814, 805)
+    actions.w3c_actions.pointer_action.pointer_down()
+    actions.w3c_actions.pointer_action.pause(0.1)
+    actions.w3c_actions.pointer_action.release()
+    actions.perform()
