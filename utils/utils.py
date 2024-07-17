@@ -45,8 +45,8 @@ def handle_skip_button(driver):
 
 
 # CLICK ON THE SKIP & START BUTTON
-def click_skip_button(driver):
-    skip_button_accessibility_id = 'Skip & Start'
+def click_get_started_button(driver):
+    skip_button_accessibility_id = 'Get Started'
     wait_and_click(driver, AppiumBy.ACCESSIBILITY_ID, skip_button_accessibility_id)
 
 

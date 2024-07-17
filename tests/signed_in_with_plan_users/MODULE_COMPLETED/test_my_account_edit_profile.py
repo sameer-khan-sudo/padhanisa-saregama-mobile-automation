@@ -1,11 +1,10 @@
 import time
 
+import pytest
 from appium.webdriver.common.appiumby import AppiumBy
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
-from utils.utils import click_skip_button, wait_and_click, perform_login, select_profile, scroll_horizontal, \
-    tap_on_screen
+from utils.utils import wait_and_click, perform_login, select_profile, scroll_horizontal, \
+    tap_on_screen, click_get_started_button
 
 
 # Click on 'Permission Allow' button
@@ -14,8 +13,8 @@ def test_handle_allow_button(driver):
                           '/permission_allow_button"]')
     wait_and_click(driver, AppiumBy.XPATH, allow_button_xpath)
 
-    # Click on 'Skip' button
-    click_skip_button(driver)
+    # Click on 'Get Started' button
+    click_get_started_button(driver)
 
 
 # Login
@@ -26,7 +25,7 @@ def test_login(driver):
 # Select profile
 def test_select_profile(driver):
     # Select user profile
-    select_profile(driver, 'Sameer')
+    select_profile(driver, 'Sohail')
 
     # More screen locator
     scroll_element_xpath = 'new UiSelector().className("android.view.View").instance(8)'
@@ -48,7 +47,6 @@ def test_click_on_my_account(driver):
 
     # Scroll the account options
     scroll_horizontal(driver, 'right')
-    time.sleep(0.5)
     scroll_horizontal(driver, 'left')
 
 
@@ -65,6 +63,8 @@ def test_edit_profile(driver):
 
     assert label_text == "Edit Profile"
 
+
+def test_enter_username(driver):
     # Get the pre-filled username
     profile_name_locator = driver.find_element(by=AppiumBy.XPATH, value='//android.widget.EditText[@text][1]')
     profile_name_text = profile_name_locator.get_attribute('text')
@@ -73,9 +73,8 @@ def test_edit_profile(driver):
     # Enter new username
     new_user_name = "Sohail"
     profile_name_locator.click()
-    time.sleep(1)
+
     profile_name_locator.clear()
-    time.sleep(1)
     profile_name_locator.send_keys(new_user_name)
     print(f'New Username : {new_user_name}')
 
@@ -87,8 +86,9 @@ def test_edit_profile(driver):
                                        value='//android.widget.ScrollView/android.widget.ImageView[3]')
     assert tick_locator.is_displayed(), "The right tick (checkmark) is not visible"
 
-    # Gender selection
-    user_gender_selection = 'Female'
+
+def test_gender_selection(driver):  # Gender selection
+    user_gender_selection = 'Male'
     gender_options_locator = '//android.view.View[contains(@content-desc,"Identify")]/android.view.View[@content-desc]'
     gender_options = driver.find_elements(by=AppiumBy.XPATH, value=gender_options_locator)
 
@@ -101,9 +101,6 @@ def test_edit_profile(driver):
             wait_and_click(driver, AppiumBy.XPATH, value=f'({gender_options_locator})[{index}]')
             break
 
-    # # Click on (i) icon info_button_locator =  driver.find_element(by=AppiumBy.ANDROID_UIAUTOMATOR, value="new
-    # UiSelector().className(\"android.view.View\").instance(12)") info_button_locator.click() time.sleep(1)
-
     # Tap to close info
     tap_on_screen(driver)
 
@@ -111,12 +108,11 @@ def test_edit_profile(driver):
     driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,
                         'new UiScrollable(new UiSelector().scrollable(true)).scrollForward()')
 
-    time.sleep(1)
 
-    # Select Learner's Age
-    age_dropdown_locator = driver.find_element(by=AppiumBy.XPATH, value="//android.widget.ImageView[@content-desc][1]")
-    age_dropdown_locator.click()
-    time.sleep(1)
+@pytest.mark.skip()
+def test_age_selection(driver):
+    # Select Learner's Age age_dropdown_locator = driver.find_element(by=AppiumBy.XPATH,
+    # value="//android.widget.ImageView[@content-desc][1]") age_dropdown_locator.click() time.sleep(1)
 
     age_selection = '25 - 35'
     # Get dropdown data
@@ -126,27 +122,40 @@ def test_edit_profile(driver):
     elements = driver.find_elements(by=AppiumBy.XPATH, value=xpath_locator)
 
     # Print the content-desc attribute of each element
-    for element in elements:
-        content_desc = element.get_attribute("content-desc")
-        print(content_desc)
+    # for element in elements:
+    #     content_desc = element.get_attribute("content-desc")
+    #     print(content_desc)
+    #
+    #     # Select user age
+    #     if content_desc == age_selection:
+    #         element.click()
 
-        # Select user age
-        if content_desc == user_gender_selection:
-            element.click()
 
-    # Enter email
-    email_address_locator = driver.find_element(by=AppiumBy.XPATH, value='//android.widget.EditText[@text][2]')
-
+def test_enter_email(driver):
     # Get the current value of the email field
-    current_value = email_address_locator.text
+    email_address_locator = driver.find_element(by=AppiumBy.XPATH, value='//android.widget.EditText[@text][2]')
+    email_address_text = email_address_locator.get_attribute('text')
+    print(f'Email Address : {email_address_text}')
 
-    # If there's text in the field, clear it
-    if current_value:
+    new_email = 'khan.sameer301999@gmail.com'
+    if email_address_text == '':
+        email_address_locator.click()
+        # Enter the new email address
+        email_address_locator.send_keys(new_email)
+
+        # Click on the screen to close the keyboard
+        tap_on_screen(driver)
+
+    else:
+        email_address_locator.click()
         email_address_locator.clear()
-        print("Existing data cleared from the email field.")
+        email_address_locator.send_keys(new_email)
 
-    # Enter new data
-    new_email = "newemail@example.com"  # Replace with the email you want to enter
-    email_address_locator.send_keys(new_email)
-    print(f"Entered new email: {new_email}")
+        # Click on the screen to close the keyboard
+        tap_on_screen(driver)
 
+
+def test_click_on_save_changes_btn(driver):
+    # Click on Save Changes button
+    save_changes_btn_locator = '//android.widget.ImageView[@content-desc="Save Changes"]'
+    wait_and_click(driver, AppiumBy.XPATH, value=save_changes_btn_locator)
