@@ -58,27 +58,20 @@ def click_back_button(driver):
 
 # PERFORM LOGIN BY ENTERING THE MOBILE NUMBER AND CLICKING NECESSARY BUTTONS
 def perform_login(driver):
-    more_locator = '//android.widget.ImageView[@content-desc="More"]'
-    wait_and_click(driver, AppiumBy.XPATH, more_locator)
-
-    sign_in_locator = '//android.view.View[@content-desc="Sign In"]'
-    wait_and_click(driver, AppiumBy.XPATH, sign_in_locator)
-
     login_field_xpath = "//android.widget.EditText"
     login_field = WebDriverWait(driver, 20).until(EC.visibility_of_element_located((AppiumBy.XPATH, login_field_xpath)))
     login_field.click()
     login_field.send_keys('8888888888')
 
-    # CLOSE THE KEYBOARD
-    keyboard_down = driver.find_element(by=AppiumBy.XPATH,
-                                        value='//android.view.View[starts-with(@content-desc, "Padhanisa")]')
-    keyboard_down.click()
+    # Close the Keyboard
+    screen_click(driver)
 
+    # Tick the checkbox
     check_box_xpath = "//android.widget.CheckBox"
     wait_and_click(driver, AppiumBy.XPATH, check_box_xpath)
 
-    next_button_xpath = '//android.widget.ImageView[@content-desc="Next"]'
-    wait_and_click(driver, AppiumBy.XPATH, next_button_xpath)
+    get_otp_btn_locator = '//android.widget.ImageView[@content-desc="Get OTP"]'
+    wait_and_click(driver, AppiumBy.XPATH, get_otp_btn_locator)
 
 
 # SELECT USER PROFILE BY CLICKING ON THE APPROPRIATE ELEMENT
@@ -101,9 +94,9 @@ def click_learn_to_sing(driver):
 
 
 def select_mode(driver, mode):
-    mode_locator = f'//android.widget.ImageView[starts-with(@content-desc,{mode})]'
+    mode_locator = f'//android.widget.ImageView[contains(@content-desc,"{mode}")]'
     wait_and_click(driver, AppiumBy.XPATH, mode_locator)
-    time.sleep(1)
+    # time.sleep(1)
 
 
 # Scroll song listing vertical
@@ -389,8 +382,15 @@ def click_on_continue_button(driver):
 
 # CLICK ON SCREEN
 def screen_click(driver):
+    # actions = ActionChains(driver)
+    # actions.w3c_actions.pointer_action.move_to_location(492, 944).click()
+    # actions.perform()
     actions = ActionChains(driver)
-    actions.w3c_actions.pointer_action.move_to_location(1113, 402).click()
+    actions.w3c_actions = ActionBuilder(driver, mouse=PointerInput(interaction.POINTER_TOUCH, "touch"))
+    actions.w3c_actions.pointer_action.move_to_location(492, 944)
+    actions.w3c_actions.pointer_action.pointer_down()
+    actions.w3c_actions.pointer_action.pause(0.1)
+    actions.w3c_actions.pointer_action.release()
     actions.perform()
 
 
@@ -460,3 +460,97 @@ def tap_on_screen(driver):
     actions.w3c_actions.pointer_action.pause(0.1)
     actions.w3c_actions.pointer_action.release()
     actions.perform()
+
+
+def select_songs_by_character(driver, target_char):
+    scroll_bar_locator = (AppiumBy.XPATH, '//android.view.View[contains(@content-desc, "A\nB\nC")]')
+
+    scroll_bar = WebDriverWait(driver, 10).until(EC.presence_of_element_located(scroll_bar_locator))
+
+    char_list = scroll_bar.get_attribute('content-desc').split('\n')
+
+    if target_char not in char_list:
+        raise ValueError(f"Character '{target_char}' not found in the scroll bar")
+
+    char_index = char_list.index(target_char)
+    total_chars = len(char_list)
+
+    location = scroll_bar.location
+    size = scroll_bar.size
+
+    x = location['x'] + size['width'] // 2
+    y = location['y'] + (size['height'] * char_index // total_chars)
+
+    actions = ActionChains(driver)
+    actions.w3c_actions = ActionBuilder(driver, mouse=PointerInput(interaction.POINTER_TOUCH, "finger"))
+
+    (actions.w3c_actions.pointer_action
+     .move_to_location(x, y)
+     .pointer_down()
+     .pause(0.1)
+     .release())
+
+    actions.perform()
+
+
+def scroll_song_list(driver, direction):
+    scroll_bar = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((AppiumBy.XPATH,
+                                        '//android.view.View[@content-desc="A\nB\nC\nD\nE\nG\nH\nI\nJ\nK\nL\nM\nN\nO\nP\nR\nS\nT\nU\nY"]'))
+    )
+
+    # Get the location and size of the scroll bar
+    location = scroll_bar.location
+    size = scroll_bar.size
+
+    # Calculate the coordinates
+    start_x = location['x'] + (size['width'] // 2)
+
+    if direction.lower() == 'down':
+        start_y = location['y'] + 10
+        end_y = location['y'] + size['height'] - 10
+    elif direction.lower() == 'up':
+        start_y = location['y'] + size['height'] - 10
+        end_y = location['y'] + 10
+    else:
+        raise ValueError("Direction must be 'up' or 'down'")
+
+    # Create a PointerInput object for touch events
+    finger = PointerInput(interaction.POINTER_TOUCH, "finger")
+
+    # Create an ActionChains object
+    actions = ActionChains(driver)
+
+    # Add actions to the chain
+    actions.w3c_actions = ActionBuilder(driver, mouse=finger)
+    actions.w3c_actions.pointer_action.move_to_location(start_x, start_y)
+    actions.w3c_actions.pointer_action.pointer_down()
+    actions.w3c_actions.pointer_action.pause(0.5)  # Press and hold for 500ms
+
+    steps = 20  # Number of steps for smooth scroll
+    for i in range(1, steps + 1):
+        if direction.lower() == 'down':
+            new_y = start_y + (end_y - start_y) * i / steps
+        else:  # 'up'
+            new_y = start_y - (start_y - end_y) * i / steps
+
+        actions.w3c_actions.pointer_action.move_to_location(start_x, new_y)
+        actions.w3c_actions.pointer_action.pause(0.05)  # Short pause between movements
+
+    # Release at the end
+    actions.w3c_actions.pointer_action.release()
+
+    # Perform the action
+    actions.perform()
+
+    if direction.lower() == 'up':
+        scroll_bar.click()
+
+
+def difficulty_level_selection(driver, level):
+    mode = level
+    level_locator = (f"//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout"
+                     f"/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View["
+                     f"5]//android.view.View[@content-desc='{mode}']")
+
+    wait_and_click(driver, AppiumBy.XPATH, value=level_locator)

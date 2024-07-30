@@ -5,9 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a75459d-8ded-4764-bfa2-a076675d7e83" name="Changes" comment="Complete More Support Module.">
-      <change afterPath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_my_account_delete_or_reset_profile.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/conftest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_class_mode.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_my_account.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/signed_in_with_plan_users/MODULE_COMPLETED/test_my_account_edit_profile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/draft/test_learn_songs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/draft/test_perform_to_songs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/draft/test_practice_exercise.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/MODULE_COMPLETED/test_help_videos.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/MODULE_COMPLETED/test_more_settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/MODULE_COMPLETED/test_more_support.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/MODULE_COMPLETED/test_my_account_edit_profile.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/MODULE_COMPLETED/test_terms_and_conditions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/MODULE_COMPLETED/test_understand_concepts.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/conftest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_code.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_more_faq.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_my_account_delete_or_reset_profile.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,6 +64,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "Python tests.Python tests in test_class.py.executor": "Run",
+    "Python tests.Python tests in test_class_mode.py.executor": "Run",
     "Python tests.Python tests in test_more_faq.py.executor": "Run",
     "Python tests.Python tests in test_more_settings.py.executor": "Run",
     "Python tests.Python tests in test_more_support.py.executor": "Run",
@@ -69,14 +84,29 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\PADHANISA_SAREGAMA\tests" />
       <recent name="C:\PADHANISA_SAREGAMA\tests\signed_in_with_plan_users\MODULE_COMPLETED" />
       <recent name="C:\PADHANISA_SAREGAMA\tests\signed_in_with_plan_users" />
       <recent name="C:\PADHANISA_SAREGAMA\tests\draft" />
-      <recent name="C:\PADHANISA_SAREGAMA\tests" />
       <recent name="C:\PADHANISA_SAREGAMA" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python tests.Python tests in test_class_mode.py">
+    <configuration name="Python tests in test_class_mode.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="PADHANISA_SAREGAMA" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/test_class_mode.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="Python tests in test_more_support.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="PADHANISA_SAREGAMA" />
       <option name="ENV_FILES" value="" />
@@ -94,6 +124,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests in test_class_mode.py" />
         <item itemvalue="Python tests.Python tests in test_more_support.py" />
       </list>
     </recent_temporary>
@@ -194,7 +225,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721065960095</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Complete More Support Module.">
+      <option name="closed" value="true" />
+      <created>1721217237258</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1721217237258</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -204,16 +243,5 @@
     <MESSAGE value="Updating code!!" />
     <MESSAGE value="Complete More Support Module." />
     <option name="LAST_COMMIT_MESSAGE" value="Complete More Support Module." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/utils/utils.py</url>
-          <line>239</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
