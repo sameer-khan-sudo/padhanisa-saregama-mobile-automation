@@ -197,11 +197,6 @@ def search_song(driver, song_name):
     search_field.click()
     search_field.send_keys(song_name)
 
-    # CLOSE THE KEYBOARD
-    # keyboard_down = driver.find_element(by=AppiumBy.ANDROID_UIAUTOMATOR,
-    #                                     value='new UiSelector().className("android.view.View").instance(10)')
-    # keyboard_down.click()
-
 
 def play_song(driver):
     # RETRIEVE SONG LIST
@@ -591,3 +586,21 @@ def filter_btn_selection(driver, btn_selection):
         wait_and_click(driver, AppiumBy.XPATH, clear_btn_locator)
 
     print(f"Button selected: {btn_selection}")
+
+
+# Get video time and wait for video completion
+def wait_for_video_completion(driver):
+    try:
+        video_timer = driver.find_element(by=AppiumBy.ID, value='com.saregama.edutech.uat:id/tv_total_time')
+        get_video_timer = video_timer.get_attribute('text')
+        print(f'Video timer : {get_video_timer}')
+
+        minutes, seconds = map(int, get_video_timer.split(':'))
+        total_seconds = minutes * 60 + seconds
+
+        print(f'Waiting for video to complete. Duration: {total_seconds} seconds')
+        time.sleep(total_seconds)
+        print("Video playback time completed")
+
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")

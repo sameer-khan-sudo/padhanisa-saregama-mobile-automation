@@ -8,7 +8,7 @@ from selenium.webdriver.common.actions.action_builder import ActionBuilder
 from selenium.webdriver.common.actions.pointer_input import PointerInput
 
 from utils.utils import select_mode, select_songs_by_character, scroll_song_list, difficulty_level_selection, \
-    song_filter_selection, filter_btn_selection, search_song, tap_on_screen, allow_device_permissions
+    song_filter_selection, filter_btn_selection, search_song
 from utils.utils import wait_and_click, perform_login, select_profile, click_get_started_button
 
 
