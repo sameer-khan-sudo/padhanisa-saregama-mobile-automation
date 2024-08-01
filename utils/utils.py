@@ -187,22 +187,20 @@ def scroll_horizontally_to_end(driver, scroll_container, direction='right', max_
 
 # SEARCH SONG
 def search_song(driver, song_name):
-    time.sleep(1)
-    # CLICK ON 'SEARCH' BUTTON
-    searchbar_icon_locator = "new UiSelector().className(\"android.widget.ImageView\").instance(0)"
-    wait_and_click(driver, AppiumBy.ANDROID_UIAUTOMATOR, value=searchbar_icon_locator)
 
-    search_field = driver.find_element(by=AppiumBy.ANDROID_UIAUTOMATOR,
-                                       value="new UiSelector().className(\"android.widget.ImageView\").instance(0)")
+    # CLICK ON 'SEARCH' BUTTON
+    song_name = song_name
+    search_btn = driver.find_element(by=AppiumBy.ANDROID_UIAUTOMATOR,
+                              value="new UiSelector().className(\"android.widget.ImageView\").instance(0)")
+    search_btn.click()
+    search_field = driver.find_element(by=AppiumBy.CLASS_NAME, value="android.widget.EditText")
     search_field.click()
-    el2 = driver.find_element(by=AppiumBy.CLASS_NAME, value="android.widget.EditText")
-    el2.click()
     search_field.send_keys(song_name)
 
     # CLOSE THE KEYBOARD
-    keyboard_down = driver.find_element(by=AppiumBy.ANDROID_UIAUTOMATOR,
-                                        value='new UiSelector().className("android.view.View").instance(10)')
-    keyboard_down.click()
+    # keyboard_down = driver.find_element(by=AppiumBy.ANDROID_UIAUTOMATOR,
+    #                                     value='new UiSelector().className("android.view.View").instance(10)')
+    # keyboard_down.click()
 
 
 def play_song(driver):
@@ -496,7 +494,7 @@ def select_songs_by_character(driver, target_char):
 def scroll_song_list(driver, direction):
     scroll_bar = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((AppiumBy.XPATH,
-                                        '//android.view.View[@content-desc="A\nB\nC\nD\nE\nG\nH\nI\nJ\nK\nL\nM\nN\nO\nP\nR\nS\nT\nU\nY"]'))
+                                        '//android.view.View[@content-desc="A B C D E G H I K L M P R S T V W Y"]'))
     )
 
     # Get the location and size of the scroll bar
@@ -547,6 +545,7 @@ def scroll_song_list(driver, direction):
         scroll_bar.click()
 
 
+# Difficulty Level Selection
 def difficulty_level_selection(driver, level):
     mode = level
     level_locator = (f"//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout"
@@ -554,3 +553,41 @@ def difficulty_level_selection(driver, level):
                      f"5]//android.view.View[@content-desc='{mode}']")
 
     wait_and_click(driver, AppiumBy.XPATH, value=level_locator)
+
+
+# Apply Song Filter
+def song_filter_selection(driver, setting_name, target_values):
+    driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, f'new UiSelector().description("{setting_name}")').click()
+
+    target_values = list(target_values)
+    clicked_values = []
+
+    while target_values:
+        elements = driver.find_elements(AppiumBy.XPATH,
+                                        '//android.view.View[@content-desc]/android.view.View[2]/android.view.View//*[@content-desc]')
+        for element in elements:
+            content_desc = element.get_attribute('content-desc')
+            if content_desc in target_values:
+                element.click()
+                clicked_values.append(content_desc)
+                target_values.remove(content_desc)
+                break
+        else:
+            break
+
+    print(f"Clicked: {clicked_values}")
+    print(f"Not found: {target_values}")
+
+
+# Filter button selection
+def filter_btn_selection(driver, btn_selection):
+    if btn_selection == 'Apply':
+        # Click on Apply button
+        apply_btn_locator = '//android.widget.Button[@content-desc="Apply"]'
+        wait_and_click(driver, AppiumBy.XPATH, apply_btn_locator)
+    elif btn_selection == 'Clear':
+        # Click on Clear button
+        clear_btn_locator = '//android.widget.Button[@content-desc="Clear"]'
+        wait_and_click(driver, AppiumBy.XPATH, clear_btn_locator)
+
+    print(f"Button selected: {btn_selection}")

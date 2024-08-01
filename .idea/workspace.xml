@@ -4,23 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a75459d-8ded-4764-bfa2-a076675d7e83" name="Changes" comment="Complete More Support Module.">
-      <change afterPath="$PROJECT_DIR$/tests/conftest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_class_mode.py" afterDir="false" />
+    <list default="true" id="9a75459d-8ded-4764-bfa2-a076675d7e83" name="Changes" comment="New phase">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/draft/test_learn_songs.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/draft/test_perform_to_songs.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/draft/test_practice_exercise.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/MODULE_COMPLETED/test_help_videos.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/MODULE_COMPLETED/test_more_settings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/MODULE_COMPLETED/test_more_support.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/MODULE_COMPLETED/test_my_account_edit_profile.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/MODULE_COMPLETED/test_terms_and_conditions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/MODULE_COMPLETED/test_understand_concepts.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/conftest.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_code.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_more_faq.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/signed_in_with_plan_users/test_my_account_delete_or_reset_profile.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_class_mode.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_class_mode.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,27 +47,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "Python tests.Python tests in test_class.py.executor": "Run",
-    "Python tests.Python tests in test_class_mode.py.executor": "Run",
-    "Python tests.Python tests in test_more_faq.py.executor": "Run",
-    "Python tests.Python tests in test_more_settings.py.executor": "Run",
-    "Python tests.Python tests in test_more_support.py.executor": "Run",
-    "Python tests.Python tests in test_my_account.py.executor": "Run",
-    "Python tests.Python tests in test_my_account_delete_or_reset_profile.py.executor": "Run",
-    "Python tests.Python tests in test_practice_exercise.py.executor": "Run",
-    "Python tests.Python tests in test_privacy_policy.py.executor": "Run",
-    "Python tests.Python tests in test_terms_and_conditions.py.executor": "Run",
-    "Python tests.Python tests in test_understand_concepts.py.executor": "Run",
-    "Python.conftest.executor": "Run",
-    "Python.utils.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;Python tests.Python tests in test_class.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_class_mode.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_more_faq.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_more_settings.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_more_support.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_my_account.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_my_account_delete_or_reset_profile.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_practice_exercise.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_privacy_policy.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_terms_and_conditions.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_understand_concepts.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.conftest.executor&quot;: &quot;Run&quot;,
+    &quot;Python.utils.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\PADHANISA_SAREGAMA\tests" />
@@ -91,7 +77,7 @@
       <recent name="C:\PADHANISA_SAREGAMA" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests in test_class_mode.py">
+  <component name="RunManager">
     <configuration name="Python tests in test_class_mode.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="PADHANISA_SAREGAMA" />
       <option name="ENV_FILES" value="" />
@@ -233,7 +219,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721217237258</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="New phase">
+      <option name="closed" value="true" />
+      <created>1722325187066</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1722325187066</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -242,6 +236,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Updating code!!" />
     <MESSAGE value="Complete More Support Module." />
-    <option name="LAST_COMMIT_MESSAGE" value="Complete More Support Module." />
+    <MESSAGE value="New phase" />
+    <option name="LAST_COMMIT_MESSAGE" value="New phase" />
   </component>
 </project>
