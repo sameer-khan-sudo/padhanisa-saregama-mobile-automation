@@ -10,7 +10,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 from utils.utils import select_songs_by_character, scroll_song_list, difficulty_level_selection, \
-    song_filter_selection, filter_btn_selection, search_song, wait_for_video_completion
+    song_filter_selection, filter_btn_selection, search_song, wait_for_video_completion, scroll_to_bottom, \
+    report_actions, preview_recording_action
 from utils.utils import wait_and_click, perform_login, select_profile, click_get_started_button
 
 
@@ -91,7 +92,7 @@ def test_apply_filter(driver):
 # Search song
 def test_search_song(driver):
     # Search song
-    song_name = 'Chala Jata Hoon'
+    song_name = 'Alvida'
     search_song(driver, song_name)
     time.sleep(2)
 
@@ -126,9 +127,15 @@ def get_song_parts(driver):
     return parts
 
 
+# Click on Get Certificate button
+def test_click_on_get_certificate(driver):
+    get_certificate_locator = '//android.widget.ImageView[@content-desc="Get Certificate"]'
+    wait_and_click(driver, AppiumBy.XPATH, value=get_certificate_locator)
+
+
 # Select part and play
 def test_select_song_part(driver, get_song_parts):
-    selected_part_name = "Mukhda 1"
+    selected_part_name = "Full Song"
 
     for song_part_name in get_song_parts:
         part_names = song_part_name.get_attribute('content-desc')
@@ -189,3 +196,51 @@ def test_active_session(driver):
 
     # Get the vide time and wait for completion
     wait_for_video_completion(driver)
+
+
+# @pytest.mark.skip()
+def test_practice_report(driver):
+    # Call the function
+    scroll_to_bottom(driver)
+
+
+# Report actions -> Save, Done & Retry
+def test_report_btn_action(driver):
+    report_actions(driver, 'Save')
+    report_actions(driver, 'Done')
+
+
+def test_preview_recording(driver):
+    # Play video
+    play_btn_locator = 'Play'
+    wait_and_click(driver, AppiumBy.ACCESSIBILITY_ID, value=play_btn_locator)
+
+    # Click on screen
+    tap_screen_locator = 'new UiSelector().className("android.view.View").instance(6)'
+    wait_and_click(driver, AppiumBy.ANDROID_UIAUTOMATOR, value=tap_screen_locator)
+
+    # Open full view player
+    maximize_player_locator = 'new UiSelector().className("android.widget.ImageView").instance(2)'
+    wait_and_click(driver, AppiumBy.ANDROID_UIAUTOMATOR, value=maximize_player_locator)
+    print('Clicked on Maximize player button')
+
+    time.sleep(4)
+
+    # Tap on the screen
+    actions = ActionChains(driver)
+    actions.w3c_actions = ActionBuilder(driver, mouse=PointerInput(interaction.POINTER_TOUCH, "touch"))
+    actions.w3c_actions.pointer_action.move_to_location(1199, 111)
+    actions.w3c_actions.pointer_action.pointer_down()
+    actions.w3c_actions.pointer_action.pause(0.1)
+    actions.w3c_actions.pointer_action.release()
+    actions.perform()
+
+    # Minimize player
+    minimize_player_locator = 'new UiSelector().className("android.widget.ImageView").instance(1)'
+    wait_and_click(driver, AppiumBy.ANDROID_UIAUTOMATOR, value=minimize_player_locator)
+    print('Clicked on Minimize player button')
+
+
+# Preview recording actions -> Save & Continue / Skip
+def test_preview_recording_action(driver):
+    preview_recording_action(driver, 'Save & Continue')

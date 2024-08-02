@@ -1,7 +1,7 @@
 import time
 
 from appium.webdriver.common.appiumby import AppiumBy
-from selenium.common import NoSuchElementException, StaleElementReferenceException
+from selenium.common import NoSuchElementException, StaleElementReferenceException, TimeoutException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.actions import interaction
 from selenium.webdriver.common.actions.action_builder import ActionBuilder
@@ -11,7 +11,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 
 # REUSABLE METHOD TO CLICK A BUTTON IDENTIFIED BY ITS LOCATOR
-def wait_and_click(driver, by, value, timeout=40):
+def wait_and_click(driver, by, value, timeout=180):
     wait = WebDriverWait(driver, timeout)
     element = wait.until(EC.element_to_be_clickable((by, value)))
     element.click()
@@ -187,11 +187,10 @@ def scroll_horizontally_to_end(driver, scroll_container, direction='right', max_
 
 # SEARCH SONG
 def search_song(driver, song_name):
-
     # CLICK ON 'SEARCH' BUTTON
     song_name = song_name
     search_btn = driver.find_element(by=AppiumBy.ANDROID_UIAUTOMATOR,
-                              value="new UiSelector().className(\"android.widget.ImageView\").instance(0)")
+                                     value="new UiSelector().className(\"android.widget.ImageView\").instance(0)")
     search_btn.click()
     search_field = driver.find_element(by=AppiumBy.CLASS_NAME, value="android.widget.EditText")
     search_field.click()
@@ -604,3 +603,72 @@ def wait_for_video_completion(driver):
 
     except Exception as e:
         print(f"An error occurred: {str(e)}")
+
+
+# Scroll the report to Save button
+def scroll_to_bottom(driver, max_attempts=3, timeout=2):
+    # Scroll indicator
+    scroll_indicator_locator = (
+        AppiumBy.XPATH,
+        '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget'
+        '.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View'
+        '/android.widget.ImageView'
+    )
+    # Save button locator
+    save_button_locator = (AppiumBy.XPATH, '//android.widget.ImageView[@content-desc="Save"]')
+
+    for _ in range(max_attempts):
+        try:
+            # Check if the Save button is already visible
+            WebDriverWait(driver, 3).until(EC.presence_of_element_located(save_button_locator))
+            print("Save button found!")
+            return True
+        except TimeoutException:
+            # If Save button is not found, click on the scroll indicator
+            try:
+                scroll_indicator = WebDriverWait(driver, timeout).until(
+                    EC.presence_of_element_located(scroll_indicator_locator)
+                )
+                scroll_indicator.click()
+                print("Clicked on scroll indicator")
+            except TimeoutException:
+                print("Scroll indicator not found")
+                return False
+
+    print("Save button not found after maximum attempts")
+    return False
+
+
+# Report actions -> Save, Done & Retry
+def report_actions(driver, action_type):
+    btn_locator = f'{action_type}'
+    wait_and_click(driver, AppiumBy.ACCESSIBILITY_ID, value=btn_locator)
+
+
+# Preview recording action Save / Skip
+def preview_recording_action(driver, action_type):
+    btn_locator = f'{action_type}'
+    wait_and_click(driver, AppiumBy.ACCESSIBILITY_ID, value=btn_locator)
+
+
+def sdk_filter_selection(driver, setting_name, target_values):
+    driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, f'new UiSelector().description("{setting_name}")').click()
+
+    target_values = list(target_values)
+    clicked_values = []
+
+    while target_values:
+        elements = driver.find_elements(AppiumBy.XPATH,
+                                        '//android.view.View[@content-desc]/android.view.View[2]/android.view.View//*[@content-desc]')
+        for element in elements:
+            content_desc = element.get_attribute('content-desc')
+            if content_desc in target_values:
+                element.click()
+                clicked_values.append(content_desc)
+                target_values.remove(content_desc)
+                break
+        else:
+            break
+
+    print(f"Clicked: {clicked_values}")
+    print(f"Not found: {target_values}")
