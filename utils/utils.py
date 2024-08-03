@@ -102,7 +102,7 @@ def select_mode(driver, mode):
 # Scroll song listing vertical
 def scroll_song_listing(driver, list_container_locator, direction):
     # FIND THE CONTAINER ELEMENT
-    container = driver.find_element(AppiumBy.XPATH, value=list_container_locator)
+    container = driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, value=list_container_locator)
 
     # GET THE DIMENSIONS OF THE CONTAINER
     container_rect = container.rect

@@ -47,21 +47,41 @@ workout_type = 'Range'
 
 # Scroll to a selected workout type
 def test_scroll_to_specific_workout(driver):
-    # Locator for the specific workout we're looking for
-    workout_locator = f'new UiSelector().description("{workout_type}")'
 
-    try:
-        # Use UiScrollable to scroll to the specific workout
-        element = driver.find_element(
-            AppiumBy.ANDROID_UIAUTOMATOR,
-            'new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView('
-            f'{workout_locator})'
-        )
-        print(f"'{workout_type}' found. Stopping scroll.")
-        return element
-    except TimeoutException:
-        print(f"'{workout_type}' not found after maximum number of attempts.")
-        return None
+    # Locator for the list of workouts
+    workout_list_locator = 'new UiSelector().className("android.view.View").instance(7)'
+
+    # Locator for the specific workout we're looking for
+    workout_locator = f'//android.view.View[@content-desc="{workout_type}"]'
+    max_attempts = 3
+    attempts = 0
+
+    while attempts < max_attempts:
+        try:
+            # Wait for the specific workout to be visible
+            element = WebDriverWait(driver, 5).until(
+                EC.presence_of_element_located((AppiumBy.XPATH, workout_locator))
+            )
+            print(f"'{workout_type}' found. Stopping scroll.")
+            return element
+        except TimeoutException:
+            print(f"'{workout_type}' not found. Continuing to scroll.")
+
+        # Find the container element to scroll within
+        container = driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, value=workout_list_locator)
+        container_rect = container.rect
+
+        # Calculate scroll coordinates
+        start_x = container_rect['x'] + container_rect['width'] // 2
+        start_y = container_rect['y'] + container_rect['height'] * 0.8
+        end_y = container_rect['y'] + container_rect['height'] * 0.2
+
+        # Perform the scroll action
+        driver.swipe(start_x, start_y, start_x, end_y, 1000)
+        attempts += 1
+
+    print(f"'{workout_type}' not found after maximum number of attempts.")
+    return None
 
 
 def test_perform_workout(driver):
@@ -87,6 +107,8 @@ def test_perform_workout(driver):
 
     # Perform horizontal swipes within the workout container
     for _ in range(3):
-        driver.swipe(start_x, y, end_x, y, 100)
+        driver.swipe(start_x, y, end_x, y, 500)
 
     print(f"Completed scrolling within the {workout_type} workout container")
+
+
