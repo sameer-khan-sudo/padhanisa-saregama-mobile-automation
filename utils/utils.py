@@ -8,13 +8,18 @@ from selenium.webdriver.common.actions.action_builder import ActionBuilder
 from selenium.webdriver.common.actions.pointer_input import PointerInput
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+import logging
 
 
 # REUSABLE METHOD TO CLICK A BUTTON IDENTIFIED BY ITS LOCATOR
 def wait_and_click(driver, by, value, timeout=180):
-    wait = WebDriverWait(driver, timeout)
-    element = wait.until(EC.element_to_be_clickable((by, value)))
-    element.click()
+    try:
+        wait = WebDriverWait(driver, timeout)
+        element = wait.until(EC.element_to_be_clickable((by, value)))
+        element.click()
+    except TimeoutException:
+        logging.error(f"Element with {by}='{value}' not clickable after {timeout} seconds")
+        raise
 
 
 # CLICK ON THE TERMS & CONDITIONS AND PRIVACY POLICY LINKS
@@ -609,10 +614,8 @@ def wait_for_video_completion(driver):
 def scroll_to_bottom(driver, max_attempts=3, timeout=2):
     # Scroll indicator
     scroll_indicator_locator = (
-        AppiumBy.XPATH,
-        '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget'
-        '.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View'
-        '/android.widget.ImageView'
+        AppiumBy.ANDROID_UIAUTOMATOR,
+        'new UiSelector().className("android.widget.ImageView").instance(10)'
     )
     # Save button locator
     save_button_locator = (AppiumBy.XPATH, '//android.widget.ImageView[@content-desc="Save"]')

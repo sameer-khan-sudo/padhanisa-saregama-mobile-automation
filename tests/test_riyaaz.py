@@ -216,15 +216,18 @@ def test_video_session(driver):
 
         # Get the video time and wait for completion
         wait_for_video_completion(driver)
-        # el1 = driver.find_element(by=AppiumBy.ANDROID_UIAUTOMATOR,
-        #                           value="new UiSelector().className(\"android.widget.ImageView\").instance(10)")
-        # el1.click()
 
 
+# Scroll the Report
 def test_scroll_report(driver):
     scroll_to_bottom(driver)
 
+
 # Report actions -> Save, Done & Retry
 def test_report_btn_action(driver):
+
+    # Save the Report
     report_actions(driver, 'Save')
+
+    # Click on Done button
     report_actions(driver, 'Done')
