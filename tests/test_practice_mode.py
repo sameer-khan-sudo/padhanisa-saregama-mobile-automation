@@ -135,7 +135,7 @@ def test_click_on_get_certificate(driver):
 
 # Select part and play
 def test_select_song_part(driver, get_song_parts):
-    selected_part_name = "Full Song"
+    selected_part_name = "Antra 1"
 
     for song_part_name in get_song_parts:
         part_names = song_part_name.get_attribute('content-desc')

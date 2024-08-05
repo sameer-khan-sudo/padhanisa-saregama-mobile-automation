@@ -1,3 +1,4 @@
+import json
 import time
 
 import pytest
@@ -9,6 +10,7 @@ from selenium.webdriver.common.actions.action_builder import ActionBuilder
 from selenium.webdriver.common.actions.pointer_input import PointerInput
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.common.actions import interaction
 
 from utils.utils import select_mode, search_song, wait_for_video_completion, scroll_to_bottom, report_actions
 from utils.utils import wait_and_click, perform_login, select_profile, click_get_started_button
@@ -212,15 +214,15 @@ def test_video_session(driver):
         click_btn_locator = 'com.saregama.edutech.uat:id/ib_play'
         wait_and_click(driver, AppiumBy.ID, click_btn_locator)
 
-        # Get the vide time and wait for completion
+        # Get the video time and wait for completion
         wait_for_video_completion(driver)
+        # el1 = driver.find_element(by=AppiumBy.ANDROID_UIAUTOMATOR,
+        #                           value="new UiSelector().className(\"android.widget.ImageView\").instance(10)")
+        # el1.click()
 
 
-# Get workout report
-def test_riyaaz_report(driver):
-    # Call the function
+def test_scroll_report(driver):
     scroll_to_bottom(driver)
-
 
 # Report actions -> Save, Done & Retry
 def test_report_btn_action(driver):
