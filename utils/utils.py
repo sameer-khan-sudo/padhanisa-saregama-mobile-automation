@@ -66,7 +66,7 @@ def perform_login(driver):
     login_field_xpath = "//android.widget.EditText"
     login_field = WebDriverWait(driver, 20).until(EC.visibility_of_element_located((AppiumBy.XPATH, login_field_xpath)))
     login_field.click()
-    login_field.send_keys('8888888888')
+    login_field.send_keys('9927484700')
 
     # Close the Keyboard
     screen_click(driver)

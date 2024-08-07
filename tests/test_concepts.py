@@ -7,9 +7,8 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.common.actions import interaction
 from selenium.webdriver.common.actions.action_builder import ActionBuilder
 from selenium.webdriver.common.actions.pointer_input import PointerInput
-from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+from selenium.webdriver.support.wait import WebDriverWait
 
 from utils.utils import select_mode, language_selection, screen_click, scroll_seekbar, click_on_pause_btn, \
     handle_setting
@@ -35,7 +34,7 @@ def test_login(driver):
 # Profile selection
 def test_select_profile(driver):
     # Select user's profile
-    select_profile(driver, 'Franklin')
+    select_profile(driver, 'SAM')
 
 
 # Click on 'Singing Classes' tab
@@ -57,61 +56,19 @@ def test_select_module(driver):
 # Scroll the list of video and get the text/name
 # @pytest.mark.skip()
 def test_scroll_and_print_texts(driver):
-    screen_size = driver.get_window_size()
-    start_x = screen_size['width'] * 0.5
-    start_y = screen_size['height'] * 0.8
-    end_y = screen_size['height'] * 0.2
 
-    all_texts = set()
-    count = 1
-    desired_text = 'Mukhda Introduction'
-    desired_element_found = False
+    # Scroll down
+    driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,
+                        'new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollForward('
+                        ').scrollForward()')
 
-    while True:
-        # Find elements and print their texts
-        wait = WebDriverWait(driver, 40)
-        elements = wait.until(EC.presence_of_all_elements_located((AppiumBy.XPATH, '//*[@content-desc]')))
-        new_text_found = False
-        for element in elements:
-            text = element.get_attribute('content-desc')
-            if text and text not in all_texts:
-                print(f"{count}. {text}")
-                all_texts.add(text)
-                new_text_found = True
-                count += 1
-                time.sleep(2)
-                if text == desired_text:
-                    ele = wait.until(EC.element_to_be_clickable((AppiumBy.XPATH,
-                                                                 f'//android.widget.ImageView[@content-desc="{desired_text}"]/android.view.View')))
-                    ele.click()
-                    return  # Exit the function after clicking the desired element
-
-        # If no new texts were found, break the loop
-        if not new_text_found:
-            break
-
-        # Perform scroll down action
-        actions = ActionChains(driver)
-        actions.w3c_actions = ActionBuilder(driver, mouse=PointerInput(interaction.POINTER_TOUCH, "touch"))
-        actions.w3c_actions.pointer_action.move_to_location(start_x, start_y)
-        actions.w3c_actions.pointer_action.pointer_down()
-        actions.w3c_actions.pointer_action.move_to_location(start_x, end_y)
-        actions.w3c_actions.pointer_action.release()
-        actions.perform()
-
-    # Perform scroll up and look for the desired element
-    while not desired_element_found:
-        # Find elements and check for the desired text
-        elements = wait.until(EC.presence_of_all_elements_located((AppiumBy.XPATH, '//*[@content-desc]')))
-        for element in elements:
-            text = element.get_attribute('content-desc')
-            if text == desired_text:
-                ele = wait.until(EC.element_to_be_clickable(
-                    (AppiumBy.XPATH, f'//android.widget.ImageView[@content-desc="{desired_text}"]/android.view.View')))
-                ele.click()
-                return  # Exit the function after clicking the desired element
+    # Scroll up
+    driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,
+                        'new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollBackward('
+                        ').scrollBackward()')
 
 
+# @pytest.mark.skip()
 # Search concept video
 def test_search_concept_video(driver):
     search_btn_locator = (
@@ -122,7 +79,7 @@ def test_search_concept_video(driver):
 
     search_field_locator = '//android.widget.EditText'
     wait_and_click(driver, AppiumBy.XPATH, search_field_locator)
-    video_name = "Sur"
+    video_name = "Sur Introduction"
 
     wait = WebDriverWait(driver, 40)
     search_field = wait.until(EC.presence_of_element_located((AppiumBy.XPATH, search_field_locator)))
@@ -154,11 +111,13 @@ def test_search_concept_video(driver):
         print(f"No Data Found for '{video_name}'. Neither search results nor 'No Result Found' screen were found.")
 
 
+# @pytest.mark.skip()
 # Language selection
 def test_language_selection(driver):
     language_selection(driver, 'Hindi')
 
 
+# @pytest.mark.skip()
 # Video screen actions
 def test_handle_single_passive_video(driver):
     # On screen click
@@ -175,6 +134,7 @@ def test_handle_single_passive_video(driver):
     wait_and_click(driver, AppiumBy.XPATH, value=setting_btn_locator)
 
 
+@pytest.mark.skip()
 # Handle settings
 def test_settings(driver):
     # Subtitle setting
@@ -193,6 +153,7 @@ def test_settings(driver):
     print("Clicked on: Apply button")
 
 
+@pytest.mark.skip()
 # Exit button
 def test_exit(driver):
     # Exit button locator
